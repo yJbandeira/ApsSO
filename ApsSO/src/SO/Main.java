@@ -11,9 +11,14 @@ public class Main {
 		
 		Scanner scan = new Scanner(file);
 		
-		while(scan.hasNextLine()) {
-			System.out.println(scan.nextLine());
+		int[] tamIni = new int [0];
+		int[] seqProc = new int [0];
+		
+		for(int i = 0; scan.hasNextLine(); i++) {
+			
 		}
+		
+		
 
 	}
 
