@@ -1,6 +1,7 @@
 package SO;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -10,6 +11,7 @@ public class Main {
 		File file = new File("ArquivoTxt/entrada.txt");
 		
 		Scanner scan = new Scanner(file);
+		ArrayList<Processo> p = new ArrayList<Processo>();
 		
 		int[] tamIni = new int [0];
 		int[] seqProc = new int [0];
@@ -28,14 +30,19 @@ public class Main {
 		else {
 			seqProc = new int[linha.length];
 			for(int i =0; i < linha.length; i++) {
-				seqProc[i] = Integer.parseInt(linha[i]);
+				//seqProc[i] = Integer.parseInt(linha[i]);
+				p.add(new Processo(Integer.parseInt(linha[i]), "P" + (i+1)));
+				
+				//p[i].setTamProc(Integer.parseInt(linha[i]));
+				//p[i].setNomeProc("P" + (i+1));
 			}			
 		}
 			cont++;
 		}
-		
-		System.out.println(tamIni[0]);
-
+		for(Processo processo: p) {
+			
+		System.out.println(processo.getTamProc());
+		}
 	}
 
 }
