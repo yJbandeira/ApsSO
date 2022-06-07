@@ -13,12 +13,28 @@ public class Main {
 		
 		int[] tamIni = new int [0];
 		int[] seqProc = new int [0];
+		int cont = 0;
 		
-		for(int i = 0; scan.hasNextLine(); i++) {
+		
+		while(scan.hasNextLine()) {
+			String linha[] = scan.nextLine().split(";");
 			
+		if(cont == 0) {
+			tamIni = new int[linha.length];
+			for(int i =0; i < linha.length; i++) {
+			tamIni[i] = Integer.parseInt(linha[i]);	
+			}
+		}
+		else {
+			seqProc = new int[linha.length];
+			for(int i =0; i < linha.length; i++) {
+				seqProc[i] = Integer.parseInt(linha[i]);
+			}			
+		}
+			cont++;
 		}
 		
-		
+		System.out.println(tamIni[0]);
 
 	}
 
