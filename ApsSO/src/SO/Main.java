@@ -7,7 +7,7 @@ public class Main {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		
-		File file = new File("/aps/entrada.txt");
+		File file = new File("ArquivoTxt/entrada.txt");
 		
 		Scanner scan = new Scanner(file);
 		
