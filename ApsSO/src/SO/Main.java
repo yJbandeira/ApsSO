@@ -12,6 +12,7 @@ public class Main {
 		
 		Scanner scan = new Scanner(file);
 		ArrayList<Processo> p = new ArrayList<Processo>();
+		ArrayList<Memoria> m = new ArrayList<Memoria>();
 		
 		int[] tamIni = new int [0];
 		int[] seqProc = new int [0];
@@ -22,16 +23,17 @@ public class Main {
 			String linha[] = scan.nextLine().split(";");
 			
 		if(cont == 0) {
-			tamIni = new int[linha.length];
+			//tamIni = new int[linha.length];
 			for(int i =0; i < linha.length; i++) {
-			tamIni[i] = Integer.parseInt(linha[i]);	
+				m.add(new Memoria(Integer.parseInt(linha[i])));
+			//tamIni[i] = Integer.parseInt(linha[i]);	
 			}
 		}
 		else {
-			seqProc = new int[linha.length];
+			//seqProc = new int[linha.length];
 			for(int i =0; i < linha.length; i++) {
 				//seqProc[i] = Integer.parseInt(linha[i]);
-				p.add(new Processo(Integer.parseInt(linha[i]), "P" + (i+1)));
+				p.add(new Processo(Integer.parseInt(linha[i]), "P" + (i+1), false));
 				
 				//p[i].setTamProc(Integer.parseInt(linha[i]));
 				//p[i].setNomeProc("P" + (i+1));
@@ -39,9 +41,24 @@ public class Main {
 		}
 			cont++;
 		}
+		
+		FirstFit.AlocaProcesso(m, p);
+		
+		System.out.println("---------- Blocos Livres ----------");
+		
+		for(Memoria memoria: m) {
+			if(memoria.getTamBloco() > 0) {
+				System.out.println(memoria.getTamBloco());
+			}
+		}
+		
+		System.out.println("-----------------------------------");
+		
 		for(Processo processo: p) {
-			
-		System.out.println(processo.getTamProc());
+		
+		
+		//System.out.println(processo.getTamProc());
+		
 		}
 	}
 
