@@ -17,6 +17,9 @@ public class Main {
 		int[] tamIni = new int [0];
 		int[] seqProc = new int [0];
 		int cont = 0;
+		int maior = 0;
+		int menor = 0;
+		int media = 0;
 		
 		
 		while(scan.hasNextLine()) {
@@ -46,20 +49,50 @@ public class Main {
 		
 		System.out.println("---------- Blocos Livres ----------");
 		
-		for(Memoria memoria: m) {
-			if(memoria.getTamBloco() > 0) {
-				System.out.println(memoria.getTamBloco());
+		for(Memoria memoria: m) {	
+			if(memoria.getTamBloco() > maior || menor == 0) {
+				maior = memoria.getTamBloco();
+			}
+			
+			if(memoria.getTamBloco() < menor || menor == 0) {
+				menor = memoria.getTamBloco();
 			}
 		}
 		
+		for(Memoria memoria: m) {
+			if(memoria.getTamBloco() > 0) {
+				if(memoria.getTamBloco() == maior) {
+					System.out.println(memoria.getTamBloco() + " - MAIOR");
+				}else if(memoria.getTamBloco() == menor) {
+					System.out.println(memoria.getTamBloco() + " - MENOR");
+				}else {
+				System.out.println(memoria.getTamBloco());
+				}
+				
+				media = media + memoria.getTamBloco();
+			}
+		}
 		System.out.println("-----------------------------------");
+		System.out.println(media/m.size() + " - MEDIA");
+		System.out.println("-----------------------------------\n");
+		
+		System.out.println("-------- Processos Alocados -------");
 		
 		for(Processo processo: p) {
-		
-		
-		//System.out.println(processo.getTamProc());
-		
+			if(processo.getAlocado()) {
+					System.out.println(processo.getNomeProc());
+			}
 		}
+		System.out.println("-----------------------------------\n");
+		System.out.println("------ Processos nao Alocados -----");
+		
+			for(Processo processo: p) {
+				if(!processo.getAlocado()) {
+						System.out.println(processo.getNomeProc());
+				}
+			}
+		
+		System.out.println("-----------------------------------\n");
 	}
 
 }
